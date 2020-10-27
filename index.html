@@ -1,15 +1,140 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>example</title>
-<link rel="icon" href="icon.png">
+<title>Example</title>  
 <style>
+:root{
+    --red: rgb(255,0,0);
+    --orange: rgb(255,128,0);
+    --yellow: rgb(255,255,0);
+    --green: rgb(0,255,0);
+    --blue: rgb(0,0,255);
+    --indigo: rgb(75,0,130);
+    --violet: rgb(238,130,238);
+    --spacer: ".";
+    --sides: #f00;
+    --count: 4;
+}
 body{
-text-align: center;
+    text-align: center;
+    font-family: "Arial Black";
+    background-color: #000000;
+    color: #FFFFFF;
+}
+a{
+    color: #FFFFFF;
+}
+a:hover{
+    color: #969696;
+}
+rainbow{
+    font-size: 500%;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding-top: 57.5px;
+    display: block;
+}
+red:after,orange:after,yellow:after,green:after,blue:after,indigo:after,violet:after{
+    content: var(--spacer);
+}
+red{
+    color: var(--red);
+}
+orange{
+    color: var(--orange);
+}
+yellow{
+    color: var(--yellow);
+}
+green{
+    color: var(--green);
+}
+blue{
+    color: var(--blue);
+}
+indigo{
+    color: var(--indigo);
+}
+violet{
+    color: var(--violet);
+}
+div.left,div.right{
+    position:fixed;
+    background-color: var(--sides);
+    height: calc(100%/var(--count));
+    width:12.5%;
+}
+div.a{
+    top: 0;
+}
+div.b{
+    top: calc(100%/var(--count));
+}
+div.c{
+    top: calc(2*(100%/var(--count)));
+}
+div.d{
+    top: calc(3*(100%/var(--count)));
+}
+div.left{
+    left:0;
+}
+div.right{
+    right:0;
 }
 </style>
+<script>
+function randcolors(count=1){
+    var o=[];
+    for(i=0;i<count;i++){
+        var res=Math.floor(Math.random()*16777215).toString(16);
+        while(res.length<6){
+            res=0+res;
+        }
+        o.push('#'+res);
+    }
+    if (o.length===1){
+        o=o[0];
+    }
+    return o;
+}
+function randgrad(count=2){
+    if(count<2){
+        count=2;
+    }
+    var colors=randcolors(count);
+    var o1=['linear-gradient('];
+    var o2=[];
+    colors.forEach(c=>o2.push(c));
+    o1.push(o2.join(","))
+    o1.push(")");
+    return o1.join("");
+}
+window.onload=function(){
+    for (clas of ['left','right']){
+        var l=document.getElementsByClassName(clas);
+        var n=0;
+        for (i of l) {
+            var v=randgrad(6);
+            l[n].style.background=v;
+            n++;
+        }
+    }
+}
+</script>
 </head>
 <body>
-hi
+<div class="left a"></div>
+<div class="left b"></div>
+<div class="left c"></div>
+<div class="left d"></div>
+<div class="right a"></div>
+<div class="right b"></div>
+<div class="right c"></div>
+<div class="right d"></div>
+<rainbow><red>r</red><orange>o</orange><yellow>y</yellow><green>g</green><blue>b</blue><indigo>i</indigo><violet>v</violet></rainbow>
+<br>
+<hr>
+<h6 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Made by <a href="https://github.com/justletterh" target="_blank">justletterh</a>.</h6>
 </body>
 </html>
