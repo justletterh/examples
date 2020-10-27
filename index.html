@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Example</title>  
+<title>Example</title>
+<link rel="icon" href="./icon.png">
 <style>
 :root{
     --red: rgb(255,0,0);
@@ -11,8 +12,7 @@
     --blue: rgb(0,0,255);
     --indigo: rgb(75,0,130);
     --violet: rgb(238,130,238);
-    --spacer: ".";
-    --sides: #f00;
+    --default: rgb(0,0,0);
     --count: 4;
 }
 body{
@@ -30,12 +30,14 @@ a:hover{
 rainbow{
     font-size: 500%;
     font-weight: bolder;
-    text-transform: uppercase;
     padding-top: 57.5px;
     display: block;
 }
-red:after,orange:after,yellow:after,green:after,blue:after,indigo:after,violet:after{
-    content: var(--spacer);
+red,orange,yellow,green,blue,indigo,violet{
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    vertical-align: text-top;
 }
 red{
     color: var(--red);
@@ -60,7 +62,7 @@ violet{
 }
 div.left,div.right{
     position:fixed;
-    background-color: var(--sides);
+    background-color: var(--default);
     height: calc(100%/var(--count));
     width:12.5%;
 }
@@ -132,7 +134,7 @@ window.onload=function(){
 <div class="right b"></div>
 <div class="right c"></div>
 <div class="right d"></div>
-<rainbow><red>r</red><orange>o</orange><yellow>y</yellow><green>g</green><blue>b</blue><indigo>i</indigo><violet>v</violet></rainbow>
+<rainbow><red>red</red><orange>orange</orange><yellow>yellow</yellow><green>green</green><blue>blue</blue><indigo>indigo</indigo><violet>violet</violet></rainbow>
 <br>
 <hr>
 <h6 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Made by <a href="https://github.com/justletterh" target="_blank">justletterh</a>.</h6>
